@@ -53,8 +53,21 @@ router.get('/:id', (req, res) => {
   });
 });
 
+// create a new tag
 router.post('/', (req, res) => {
-  // create a new tag
+  /* req.body should look like this... 
+    {
+      tag_name: "Long Sleeve Shirts"
+    }
+  */
+  Tag.create(req.body)
+  .then((tags) => {
+    res.status(200).json(tags);
+  })
+  .catch((err) => {
+    console.log(err);
+    res.status(400).json(err);
+  });
 });
 
 router.put('/:id', (req, res) => {
