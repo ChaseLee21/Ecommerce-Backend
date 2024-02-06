@@ -34,7 +34,20 @@ router.get('/:id', (req, res) => {
   Product.findOne({
     where: {
       id: req.params.id
-    }
+    },
+    attributes: ['id', 'product_name', 'price', 'stock'],
+    include: [
+      {
+        model: Category,
+        attributes: ['id', 'category_name']
+      },
+      {
+        model: Tag,
+        attributes: ['id', 'tag_name'],
+        through: { attributes: [] }, // remove the ProductTag table from the response,
+        as: 'tags'
+      }
+    ]
   })
   .then((product) => {
     res.json(product);
