@@ -24,6 +24,10 @@ router.get('/', (req, res) => {
   })
   .then((products) => {
     res.json(products);
+  })
+  .catch((err) => {
+    console.log(err);
+    res.status(500).json(err);
   });
 });
 
@@ -50,8 +54,16 @@ router.get('/:id', (req, res) => {
     ]
   })
   .then((product) => {
+    if (!product) {
+      res.status(404).json({ message: 'No product found with this id' });
+      return;
+    }
     res.json(product);
   })
+  .catch((err) => {
+    console.log(err);
+    res.status(500).json(err);
+  });
 });
 
 // create new product
