@@ -17,7 +17,12 @@ router.get('/', (req, res) => {
   })
   .then((tags) => {
     res.status(200).json(tags);
+  })
+  .catch((err) => {
+    console.log(err);
+    res.status(500).json(err);
   });
+
 });
 
 router.get('/:id', (req, res) => {
@@ -36,7 +41,15 @@ router.get('/:id', (req, res) => {
     ]
   })
   .then((tags) => {
+    if (!tags) {
+      res.status(404).json({ message: 'No tag found with this id' });
+      return;
+    }
     res.status(200).json(tags);
+  })
+  .catch((err) => {
+    console.log(err);
+    res.status(500).json(err);
   });
 });
 
