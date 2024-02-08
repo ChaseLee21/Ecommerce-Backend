@@ -10,8 +10,21 @@
   - [License](#license)
   ## Installation
   refer to usage information or for a video demonstration refer to the video below.
+
+  Demonstration Video:
+  https://drive.google.com/file/d/1PLICnX2UrKDw8F4uEQRnvIrsyHUJIJWK/view
+
   ## Usage
-  To use the app you must have node.js and mysql installed on your system. For development I used node.js version 20. Clone the repository to your machine. Open a terminal inside the repository and run the command 'npm install' to install all dependencies. Then you must login to mysql through your terminal by running 'mysql -u root -p' and enter your password for mysql when prompt. Once logged in run 'SOURCE db/schema.sql' to create the database on your machine. Close mysql and open a new terminal. Run 'node seeds/index.js' to seed the database with data to get started. Once seeded you may start the program by running 'node server.js'
+  To use the app you must have node.js and mysql installed on your system. For development I used node.js version 20. Clone the repository to your machine. Open a terminal inside the repository and run the command 'npm install' to install all dependencies. Then you must login to mysql through your terminal by running 'mysql -u root -p' and enter your password for mysql when prompt. Once logged in run 'SOURCE db/schema.sql' to create the database on your machine. Close mysql and open a new terminal. Run 'node seeds/index.js' to seed the database with data to get started. The last thing to do before running the server is to create a .env file in the root of the project. There is an example .env file given to you. Inside the .env file add your mysql username and password. Once you have done all of this you can run 'npm start' to start the server. You can now use insomnia to make http requests to the server. The server is running on localhost:3001. Below are the routes you can use to interact with the server. For more information refer to the video demonstration link above.
+
+  - http://localhost:3001/api/products
+  - http://localhost:3001/api/products/:id
+  - http://localhost:3001/api/categories
+  - http://localhost:3001/api/categories/:id
+  - http://localhost:3001/api/tags
+  - http://localhost:3001/api/tags/:id
+
+
   ## Contribution
   For this project I worked alone. 
   ## Tests
